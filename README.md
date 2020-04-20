@@ -21,4 +21,10 @@ Also, first pair of measurements in every step is not taken into account when it
 ### 3. Whole algorithm
 Whole main algorithm is interrupt driven, mainly because most tasks are strictly real-time. Main while loop has a state machine, that determines current state of the controller (for example: "startup" state, "running"). Step timing is done with a separate timer overflow interrupt. To check if a zero crossing had occured, readings are compared in an ADC conversion complete interrutp. Another timer is utilized to generate 3 PWM signals. Additionaly, it's overflow interrupt calls first conversions, and it's fourth channel is used to time second ADC conversion's start (compare interrupt).
 
+The controller also has a PI speed regulator, that uses alpha-beta filter to smooth speed readings (they vary quite a bit, because of the zero crossing detection resolution).
+
 ## Hardware
+Hardware part consists of 6 main power transistors and their driving circuitry, and two auxiliary systems, providing voltage higher and lower than supply voltage. 
+ ### 1. Power MOSFETs
+ There are six n-channel MOSGFETs, three that are above load (voltage-wise) and another 3, which sources are connected directly to ground. I used 6 n-channels, because these are better suited for high current - low dissipation aplications (comparing to p-mosfets, n-channels made from the same sized die have much lower on-resistance). The circuit is calculated to be able to conduct 30 A on DC input. After gluing some small radiator, this current can be aplied continously. Using n-channels as upper mosfets has one disadvantage - to turn the transistor on, you need to apply to it's gate voltage higher than main supply. On the other hand - lower mosfets are pretty straight forward to controll - just aplly any reasonable, positive voltage to it's base. 
+Lower mosfets gates driving uses voltage lower than power source (for example 8 V), and upper mosfets use voltage higher than supply (like Vcc+6V). 
