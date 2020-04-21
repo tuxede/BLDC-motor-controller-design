@@ -33,4 +33,6 @@ My main goal was to make a gate circuit that could, without major modifications,
 ### 3. Lower gates driving
 As previously said, lower gates are quite easy to controll. Some designs use microcontroler output alone to drive these gates. In fact, 5 V and 20 mA push-pull source is enought, as long as you use low frequency and a suitable power MOSFET, with low gate charges. In our case, a 3.3V microcontroler was used, also switching frequency was quite a bit higher, that's why I decided to use a separate IC, that would provide both higher voltage na sink/source current. NE555 is easy to configure as a digital signal amplifier. It will shift 0-3.3V logic to 0-8V, while also providing up to 200 mA sink/source. 
 ### 4. Auxiliary circuits
-All four NE555 present on this circuit need 
+All four NE555 present on this circuit are being powered with about 8V of constant voltage (Vreg). This assures, that no matter what supply voltage is (as long as it's above 9V), these ICs won't get damaged. This voltage is also usefull for powering a microcontroller or other devices. It is provided by a linear regulator, so you should be aware of it's limitations. 
+
+Higher voltage is achieved via capacitor charge pump, driven by a NE555, configured as an astable oscillator. The IC is powered from a Vreg, and it's output is isolated form high voltage with a capacitor, so again, supply voltage doesnt't affect it. It's output, V_high, will always be around VCC+6 V. 
