@@ -35,4 +35,7 @@ As previously said, lower gates are quite easy to controll. Some designs use mic
 ### 4. Auxiliary circuits
 All four NE555 present on this circuit are being powered with about 8V of constant voltage (Vreg). This assures, that no matter what supply voltage is (as long as it's above 9V), these ICs won't get damaged. This voltage is also usefull for powering a microcontroller or other devices. It is provided by a linear regulator, so you should be aware of it's limitations. 
 
-Higher voltage is achieved via capacitor charge pump, driven by a NE555, configured as an astable oscillator. The IC is powered from a Vreg, and it's output is isolated form high voltage with a capacitor, so again, supply voltage doesnt't affect it. It's output, V_high, will always be around VCC+6 V. 
+Higher voltage is achieved via capacitor charge pump, driven by a NE555, configured as an astable oscillator. The IC is powered from a Vreg, and it's output is isolated form high voltage with a capacitor, so again, supply voltage doesnt't affect it. It's output, V_high, will always be around VCC+6 V.
+
+# Summary
+ 
