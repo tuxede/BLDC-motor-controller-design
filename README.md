@@ -37,5 +37,10 @@ All four NE555 present on this circuit are being powered with about 8V of consta
 
 Higher voltage is achieved via capacitor charge pump, driven by a NE555, configured as an astable oscillator. The IC is powered from a Vreg, and it's output is isolated form high voltage with a capacitor, so again, supply voltage doesnt't affect it. It's output, V_high, will always be around VCC+6 V.
 
-# Summary
+# PCB
+to be writen
+
+# Contact
+If you have some questions or suggestions, you can send me an email to maksymilian.piechocki@o2.pl
+
  
